@@ -1,0 +1,79 @@
+<!-- (Begin of Source Code for practical.html) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!--(Meta Tags) -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords"
+    content="My AKTU Guide,Rohit Kumar,AKTU,AKTU OneView,AKTU ERP,AKTU Circular,TechWAMP Softech,Theory,ABES,ABESEC,Quantum,AKTU Quantum,Computer Science & Engineering,AKTU CSE,Data Structure,AKTU 3rd Sem" />
+  <meta name="description"
+    content="This is the Official Website of Circular | My AKTU Guide (Made by Engineers for Engineers) | Powered by TechWAMP Softech.Pls Visit Regulary for Notes etc.Successfully Crafted by Rohit Kumar" />
+  <meta name="subject" content="My AKTU Guide">
+  <meta name="copyright" content="TechWAMP Softech">
+  <meta name="revised" content="TechWAMP Softech, 16/06/2021" />
+  <meta name="author" content="Rohit Kumar - TechWAMP Softech" />
+  <!--(Favicon)-->
+  <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
+  <!--(Tittle Tag)-->
+  <title>Circular | My AKTU Guide</title>
+  <!--(CSS)-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="Stylesheet" href="https://code.jquery.com/jquery-1.12.3.js" />
+  <!--(Scripts)-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+  <style>
+    * {
+      padding: 0px !important;
+      margin: 0px !important;
+      background-color: #333;
+    }
+
+    body {
+      background-color: #333;
+    }
+
+    div {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="circular_table"></div>
+  <script>
+    var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS2gFp_98dMn1dGMRBLatZlgW6080fs96U7nG_N9CuOQuHkUBDZ3Sc3pZ--bNvrWv5N2ddd_hM5C2I_/pub?gid=8341289&single=true&output=csv';
+    $(document).ready(function () {
+      $.ajax({
+        url: url,
+        dataType: "text",
+        success: function (data) {
+          var c = 1;
+          var data = data.split(/\r?\n|\r/);
+          var table_data = '<table>';
+          for (var count = data.length-1; count > 0; count--) {
+            var cell_data = data[count].split(",");
+            table_data += '<tr>';
+            if (cell_data[0] == 1) {
+              table_data += '<td>' + '<img src="https://myaktuguide.ml/assets/img/new.gif">' + '&nbsp;&nbsp;&nbsp;' + '<a href="' + cell_data[2] + '"  target="_blank" title="Click here to View" >' + cell_data[1] + '</a>' + '</td>';
+            }
+            else if (cell_data[0] != 1) {
+              table_data += '<td>' + '<a href="' + cell_data[2] + '"  target="_blank" title="Click here to View" >' + cell_data[1] + '</a>' + '</td>';
+            }
+          }
+          table_data += '</tr>';
+          table_data += '</table>';
+          $('#circular_table').html(table_data);
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
+<!-- (End of Source Code for practical.html) -->
